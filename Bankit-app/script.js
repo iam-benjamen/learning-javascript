@@ -8,7 +8,7 @@
 const account1 = {
   owner: "Jonas Schmedtmann",
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-  interestRate: 1.2, 
+  interestRate: 1.2,
   pin: 1111,
 };
 
@@ -71,13 +71,61 @@ const displayMovements = function (movements) {
       i + 1
     } ${type}</div>
         
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov}&euro;</div>
       </div>`;
 
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
 displayMovements(account1.movements);
+
+//directly modifying the object: smart way
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0]);
+  });
+};
+createUsernames(accounts);
+// accounts.forEach(function (account, i) {
+//   createUsernames(account.owner);
+// });
+
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce(
+    (accumulator, current) => accumulator + current,
+    0
+  );
+  labelBalance.textContent = `${balance}🇪🇺`;
+};
+calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter((movement) => movement > 0)
+    .reduce((acc, movement) => acc + movement);
+  labelSumIn.textContent = `${incomes}🇪🇺`;
+
+  const out = movements
+    .filter((movement) => movement < 0)
+    .reduce((accumulator, movement) => accumulator + movement, 0);
+  labelSumOut.textContent = `${Math.abs(out)}🇪🇺`;
+
+  const interest = movements
+    .filter((movement) => movement > 0)
+    .map((deposit) => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => int >= 1)
+    .reduce((acc, movement) => acc + movement);
+  labelSumInterest.textContent = `${interest}🇪🇺`;
+};
+calcDisplaySummary(account1.movements);
+
+//filtering
+const deposit = movements.filter((movement) => movement > 0);
+const withdrawal = movements.filter((movement) => movement < 0);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
