@@ -77,7 +77,6 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
-displayMovements(account1.movements);
 
 //directly modifying the object: smart way
 const createUsernames = function (accs) {
@@ -85,7 +84,8 @@ const createUsernames = function (accs) {
     acc.username = acc.owner
       .toLowerCase()
       .split(" ")
-      .map((name) => name[0]);
+      .map((name) => name[0])
+      .join("");
   });
 };
 createUsernames(accounts);
@@ -100,29 +100,55 @@ const calcDisplayBalance = function (movements) {
   );
   labelBalance.textContent = `${balance}🇪🇺`;
 };
-calcDisplayBalance(account1.movements);
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (accounts) {
+  const incomes = accounts.movements
     .filter((movement) => movement > 0)
     .reduce((acc, movement) => acc + movement);
   labelSumIn.textContent = `${incomes}🇪🇺`;
 
-  const out = movements
+  const out =accounts.movements
     .filter((movement) => movement < 0)
     .reduce((accumulator, movement) => accumulator + movement, 0);
   labelSumOut.textContent = `${Math.abs(out)}🇪🇺`;
 
-  const interest = movements
+  const interest = accounts.movements
     .filter((movement) => movement > 0)
-    .map((deposit) => (deposit * 1.2) / 100)
+    .map((deposit) => (deposit * accounts.interestRate) / 100)
     .filter((int, i, arr) => int >= 1)
     .reduce((acc, movement) => acc + movement);
   labelSumInterest.textContent = `${interest}🇪🇺`;
 };
-calcDisplaySummary(account1.movements);
 
-//filtering
+//Event handler
+let currentAccount;
+
+btnLogin.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    (account) => account.username === inputLoginUsername.value
+  );
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(" ")[0]
+    }`;
+
+    //clear input fields
+    inputLoginPin.value = inputLoginUsername.value = "";
+
+    //remove inout field focus
+    inputLoginPin.blur();
+
+    calcDisplaySummary(currentAccount);
+    calcDisplayBalance(currentAccount.movements);
+    displayMovements(currentAccount.movements);
+    containerApp.style.opacity = 100;
+  }
+});
+
+//filterings
 const deposit = movements.filter((movement) => movement > 0);
 const withdrawal = movements.filter((movement) => movement < 0);
 
