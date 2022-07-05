@@ -172,3 +172,48 @@ const JessicaAccount2 = accounts.filter(
   (account) => account.owner === "Jessica Davis"
 );
 console.log(JessicaAccount2);
+
+//FINDINDEX METHOD
+console.log(movements.findIndex((movement) => movement > 200));
+//returns the index of the first element that satisfies the condition
+
+//INCLUDES CHECKS FOR EQALITY3
+console.log(movements.includes(-130));
+//returns a bolean
+
+//SOME can take conditions
+console.log(movements.some((movement) => movement === -130));
+//include works better for equality
+
+//EVERY returns true if every elements
+console.log(account4.movements.every((movement) => movement > 0));
+
+//FLAT method, goes only one level
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, 5, [6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+///SORTING STRINGS ALPHABETICAL
+const names = ["Bayo", "Tolu", "Bola", "Ahmed"];
+console.log(names.sort());
+
+//Sorting Numbers
+//If you return positive value: a,b
+//If you return negative value: b,a
+// movements.sort((a, b) => {
+//   if (a > b) {
+//     return 1;
+//   } else if (a < b) {
+//     return -1;
+//   }
+// });
+
+//Ascending
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+//Descending
+movements.sort((a, b) => b - a);
+//Note that sort mutates the original array

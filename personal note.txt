@@ -1,0 +1,5 @@
+1. Build a solid base (Learn language, libraries, frameworks thourughly).
+2. Build corporate projects (Use pre-existing tools).
+3. Build side projects(invent your own tools).
+4. Acquire Problem-solving skill (Learn DSA).
+5. Be inquisitive and don't stop learning.
