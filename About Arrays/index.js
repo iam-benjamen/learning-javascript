@@ -217,3 +217,34 @@ console.log(movements);
 //Descending
 movements.sort((a, b) => b - a);
 //Note that sort mutates the original array
+
+//Fill
+const x = new Array(7); //creates an empty array
+x.fill(1); //fill with 1s
+x.fill(1, 3); //fill with 1s starting from index 3
+x.fill(4, 2, 4); //fill with 4s starting from index 2 to 4
+
+//Array.from()
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+//Exercise
+const diceRolls = Array.from({ length: 100 }, () =>
+  Math.floor(Math.random() * 7)
+);
+console.log(diceRolls);
+
+//Mkaing array from NodeList
+labelBalance.addEventListener("click", function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll(".movemenets__value"),
+    (el) => (el.textContent = "hey")
+  );
+  console.log(movementsUI);
+});
+//or
+
+const movementsUI2 = [...document.querySelectorAll(".movemenets__value")];
