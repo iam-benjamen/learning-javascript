@@ -1,4 +1,4 @@
-1. Build a solid base (Learn language, libraries, frameworks thourughly).
+1. Build a solid base (Learn language, libraries, frameworks thoroughly).
 2. Build corporate projects (Use pre-existing tools).
 3. Build side projects(invent your own tools).
 4. Acquire Problem-solving skill (Learn DSA).
