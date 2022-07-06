@@ -237,14 +237,69 @@ const diceRolls = Array.from({ length: 100 }, () =>
 );
 console.log(diceRolls);
 
-//Mkaing array from NodeList
-labelBalance.addEventListener("click", function () {
-  const movementsUI = Array.from(
-    document.querySelectorAll(".movemenets__value"),
-    (el) => (el.textContent = "hey")
-  );
-  console.log(movementsUI);
-});
-//or
+// //Mkaing array from NodeList
+// labelBalance.addEventListener("click", function () {
+//   const movementsUI = Array.from(
+//     document.querySelectorAll(".movemenets__value"),
+//     (el) => (el.textContent = "hey")
+//   );
+//   console.log(movementsUI);
+// });
+// //or
 
-const movementsUI2 = [...document.querySelectorAll(".movemenets__value")];
+// const movementsUI2 = [...document.querySelectorAll(".movemenets__value")];
+
+//Coding Challenge 4
+const dogs = [
+  { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
+  { weight: 8, curFood: 200, owners: ["Matilda"] },
+  { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
+  { weight: 32, curFood: 340, owners: ["Michael"] },
+];
+
+//1
+dogs.forEach((dog, i) => {
+  dog.recommendedFood = dog.weight ** 0.75 * 28;
+});
+console.log(dogs);
+
+//2
+const sarahDog = dogs.find((dog) => dog.owners.includes("Sarah"));
+console.log(sarahDog);
+sarahDog.curFood > sarahDog.recommendedFood
+  ? console.log(`Sarah's dog is eating much`)
+  : console.log(`Sarah's dog is eating much`);
+
+//3
+// const ownersEatToomuch = [];
+// const ownnersEatTooLittle = [];
+// const dogsEatingOkay = [];
+// dogs.forEach((dog) => {
+//   if (dog.curFood > dog.recommendedFood) {
+//     ownersEatToomuch.push(dog.owners);
+//   } else if (dog.curFood < dog.recommendedFood) {
+//     ownnersEatTooLittle.push(dog.owners);
+//   } else if (dog.curFood === dog.recommendedFood) {
+//     dogsEatingOkay.push(dog);
+//   }
+// });
+
+const ownersEatToomuch = dogs
+  .filter((dog) => {
+    dog.recommendedFood < dog.curFood;
+  })
+  .map((dog) => dog.owners)
+  .flat();
+
+console.log(ownersEatToomuch);
+console.log(ownnersEatTooLittle.flat());
+console.log(dogsEatingOkay);
+
+console.log(
+  dogs.some((dog) => {
+    dog.curFood === dog.recommendedFood;
+  })
+);
+
+//Sorting
+console.log(dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood));
