@@ -138,7 +138,7 @@ console.log(test(100));
 
 (() => console.log("This will also never run again"))();
 //Variable inside IIFE are private and encapsulated
-
+//but why use IIFE to simply make a variable private when 
 
 
 //Closures
