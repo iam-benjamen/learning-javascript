@@ -90,3 +90,42 @@ book.apply(eurowings, flightData);
 book.call(swiss, ...flightData);
 
 //Bind - retuns a new function
+const bookEW = book.bind(eurowings);
+bookEW(23, "Steven williams");
+
+//custom
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23("Jonas coopter");
+
+//With event listener
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector(".buy")
+  .addEventListener("click", lufthansa.buyPlane.bind(lufthansa));
+//this keyword in lufthansa.buyplane is not accessed in document.querySelector(".buy")
+//So there needs to be a binding tolufthansa
+
+//Partial APPLICATION
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+//function returning functions
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+const test = addTaxRate(0.23);
+console.log(test(100));
