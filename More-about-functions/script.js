@@ -129,3 +129,16 @@ const addTaxRate = function (rate) {
 };
 const test = addTaxRate(0.23);
 console.log(test(100));
+
+//Immediately Invoked Function Expressions
+(function () {
+  console.log("This will never run again");
+  const isPrivate = 23;
+})();
+
+(() => console.log("This will also never run again"))();
+//Variable inside IIFE are private and encapsulated
+
+
+
+//Closures
