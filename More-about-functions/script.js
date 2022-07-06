@@ -50,3 +50,43 @@ transformer("JavaScript is the best!", upperFirstWord);
 const greet = (greeting) => (name) => {
   console.log(`${greeting} ${name}`);
 };
+
+//THIS KEYWORD
+
+const lufthansa = {
+  airline: "Lufthansa",
+  iataCode: "LH",
+  bookings: [],
+
+  //using object literal
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+  },
+};
+
+lufthansa.book(239, "Jonas Schmedtmann");
+
+const eurowings = {
+  name: "Eurowings",
+  iataCode: "EW",
+  bookings: [],
+};
+
+const book = lufthansa.book;
+book(23, "Sarah Williams"); //error
+//This keyword points to undefined in a regular function call
+
+//To manaually define what the this keyword points to, we use the call, apply and bind methods
+book.call(eurowings, 23, "Sarah Williams");
+book.call(lufthansa, 239, "Mary Cooper");
+
+//Apply
+const flightData = [239, "Mary Cooper"];
+book.apply(eurowings, flightData);
+//or
+
+book.call(swiss, ...flightData);
+
+//Bind - retuns a new function
