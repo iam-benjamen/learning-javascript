@@ -237,7 +237,7 @@ const diceRolls = Array.from({ length: 100 }, () =>
 );
 console.log(diceRolls);
 
-// //Mkaing array from NodeList
+// //Making array from NodeList
 // labelBalance.addEventListener("click", function () {
 //   const movementsUI = Array.from(
 //     document.querySelectorAll(".movemenets__value"),

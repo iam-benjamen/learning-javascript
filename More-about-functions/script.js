@@ -175,3 +175,5 @@ to the variables that existed at the function's birthplace
 
 console.dir(booker);
 //exposes the Closures available
+
+//Coding Challenges
