@@ -20,9 +20,9 @@ const counter = {
 };
 
 //We can pass functions as arguments to other fundtions
-btnClose.addEventListener("click", function greet() {
-  console.log("Hello");
-});
+// btnClose.addEventListener("click", function greet() {
+//   console.log("Hello");
+// });
 
 //Functions are just another kind of objects with methods
 //Higher Order Functions are functions that take in functinos as arguments or return fundtions
@@ -87,7 +87,7 @@ const flightData = [239, "Mary Cooper"];
 book.apply(eurowings, flightData);
 //or
 
-book.call(swiss, ...flightData);
+// book.call(swiss, ...flightData);
 
 //Bind - retuns a new function
 const bookEW = book.bind(eurowings);
@@ -141,22 +141,21 @@ console.log(test(100));
 //but why use IIFE to simply make a variable private when
 //const and let are blocked scoped
 
-
 //Closures
-const secureBooking = function(){
+const secureBooking = function () {
   let passengerCount = 0;
 
-  return function(){
+  return function () {
     passengerCount++;
-    console.log(`${passengerCount} passenger`)
-  }
-}
+    console.log(`${passengerCount} passenger`);
+  };
+};
 
 const booker = secureBooking();
 
-booker()
-booker()
-booker()
+booker();
+booker();
+booker();
 
 /*A closure makes a function recall
 all variables at its birthplace 
@@ -176,4 +175,49 @@ to the variables that existed at the function's birthplace
 console.dir(booker);
 //exposes the Closures available
 
-//Coding Challenges
+//Coding Challenge 1 -Poll App
+
+const poll = {
+  question: "What is your favourite programming language?",
+  options: ["1: JavaScript", "2: Python", "3: Rust", "4: C++"],
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    const answer = Number(
+      prompt(
+        `${this.question}\n${this.options.join("\n")}\n(Write option number)`
+      )
+    );
+
+    if (typeof answer === "number" && answer < this.answers.length) {
+      this.answers[answer - 1]++;
+      this.displayResults();
+    } else {
+      alert("Please input a correct number");
+    }
+  },
+  displayResults(type = "array") {
+    if (type === "array") {
+      console.log(this.answers);
+    } else {
+      console.log(`Poll results are ${this.answers.join(", ")}`);
+    }
+  },
+};
+
+document.querySelector(".poll").addEventListener("click", function () {
+  poll.registerNewAnswer();
+});
+
+poll.displayResults.call({ answers: [5, 2, 3] });
+
+//Coding CHALLENGE 2
+
+(function () {
+  const header = document.querySelector("h1");
+  header.style.color = "red";
+
+  const body = document.querySelector("body");
+  body.addEventListener("click", function () {
+    header.style.color = "blue";
+  });
+})();
