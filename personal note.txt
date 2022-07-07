@@ -1,5 +1,6 @@
-1. Build a solid base (Learn language, libraries, frameworks thoroughly).
-2. Build corporate projects (Use pre-existing tools).
-3. Build side projects(invent your own tools).
-4. Acquire Problem-solving skill (Learn DSA).
-5. Be inquisitive and don't stop learning.
+1. Learn CS Basic and Core Concepts.
+2. Build a solid base (Learn language, libraries, frameworks thoroughly).
+3. Build corporate projects (Use pre-existing tools).
+4. Build side projects(invent your own tools, explore nice features).
+5. Acquire Problem-solving skill (Learn DSA).
+6. Be inquisitive and don't stop learning.

@@ -1,13 +1,13 @@
-//learning about functions in JavaScript
-//DEFAULT Parameters Example
+//More about functions in JavaScript
+//Default Parameters Example
 
 function Sum(x = 4, y = 6) {
   return x + y;
 }
 
-//Functions can direcyl have impact on an object, beware
+//Functions can directly have impact on an object, beware
 //Functions in JavaScript are first class
-//Thay are treated like jsut another typr of object
+//Thay are treated like just another type of object
 
 //We can store functions in variables
 const add = (a, b) => a + b;
@@ -138,7 +138,40 @@ console.log(test(100));
 
 (() => console.log("This will also never run again"))();
 //Variable inside IIFE are private and encapsulated
-//but why use IIFE to simply make a variable private when 
+//but why use IIFE to simply make a variable private when
+//const and let are blocked scoped
 
 
 //Closures
+const secureBooking = function(){
+  let passengerCount = 0;
+
+  return function(){
+    passengerCount++;
+    console.log(`${passengerCount} passenger`)
+  }
+}
+
+const booker = secureBooking();
+
+booker()
+booker()
+booker()
+
+/*A closure makes a function recall
+all variables at its birthplace 
+
+A function always has access to the variable environment
+where it was created 
+
+
+A closure is the closed over variable environment
+of the execution context in which a function was created,
+even after that execution context is gone
+
+A closure makes sure that a function doesn't lose connection
+to the variables that existed at the function's birthplace
+*/
+
+console.dir(booker);
+//exposes the Closures available
