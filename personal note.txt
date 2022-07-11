@@ -1,6 +1,15 @@
+Path to becoming a software Engr.
 1. Learn CS Basic and Core Concepts.
+    -OSSU Syllabus
 2. Build a solid base (Learn language, libraries, frameworks thoroughly).
+    -Js/Ts
+    -Java and Spring
+    -React & Nextjs
+    -Nodejs & Express
+    -Cloud Services
+    -DivOps & DevOps
 3. Build corporate projects (Use pre-existing tools).
 4. Build side projects(invent your own tools, explore nice features).
 5. Acquire Problem-solving skill (Learn DSA).
-6. Be inquisitive and don't stop learning.
+    -Leetcode
+6. Don't stop learning, Networking and Social Media Presence.
