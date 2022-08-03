@@ -211,7 +211,6 @@ document.querySelector(".poll").addEventListener("click", function () {
 poll.displayResults.call({ answers: [5, 2, 3] });
 
 //Coding CHALLENGE 2
-
 (function () {
   const header = document.querySelector("h1");
   header.style.color = "red";
